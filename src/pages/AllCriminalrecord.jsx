@@ -9,7 +9,7 @@ const AllCriminalrecord = () => {
   const fetchCiminalData = async () => {
     try {
       const { data } = await axios.get("http://localhost:5000/api/v1/fir/all");
-      console.log(data?.allFir[0]._id);
+      console.log(data?.allFir);
 
       if (data?.success) {
         toast.success(data?.message);

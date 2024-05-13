@@ -12,7 +12,8 @@ import AdminRecord from "./pages/AdminRecord";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { useEffect, useState } from "react";
 import MissingPersonForm from "./pages/MissingPersonForm";
-import DemoForm from "./pages/DemoForm";
+import AllMissingRecord from "./pages/AllMissingRecord";
+import EditMissingReport from "./pages/EditMissingReport";
 
 function App() {
   const [auth, setAuth] = useState({
@@ -45,12 +46,19 @@ function App() {
             path="/login"
             element={auth?.name ? <Navigate to={"/"} /> : <Login />}
           />
-           <Route
-            path="/demo"
-            element={<DemoForm />}
+          <Route
+            path="/all-missing-report"
+            element={
+              <ProtectedRoutes isAuthenticate={auth?.name ? true : false}>
+                <AllMissingRecord />
+              </ProtectedRoutes>
+            }
+          />];,
+
+          <Route
+            path="/single-missing-report/:id"
+            element={<ProtectedRoutes isAuthenticate={auth?.name ? true : false}><EditMissingReport /></ProtectedRoutes>}
           />
-         
-         
 
           <Route
             path="/"

@@ -9,18 +9,18 @@ const Home = () => {
       title: "ADD",
       subTitle: "Criminal Record",
     },
-    // {
-    //   url: "https://media.istockphoto.com/id/1335050732/photo/businessman-using-a-computer-to-document-management-concept-online-documentation-database-and.jpg?s=2048x2048&w=is&k=20&c=JHaHbIRf1Zikdw2huw9c7vOVM3QuPucz5_ooiqeETPI=",
-    //   link: "/login",
-    //   title: "Login",
-    //   subTitle: "Login info",
-    // },
-    // {
-    //   url: "https://img.freepik.com/premium-photo/3d-rendering-friendly-police-officer-he-is-wearing-blue-uniform-hat-badge-he-has-smile-his-face-looks-approachable_14117-68592.jpg?w=1060",
-    //   link: "/signup",
-    //   title: "Signup",
-    //   subTitle: "Create your account",
-    // },
+    {
+      url: "https://media.istockphoto.com/id/1335050732/photo/businessman-using-a-computer-to-document-management-concept-online-documentation-database-and.jpg?s=2048x2048&w=is&k=20&c=JHaHbIRf1Zikdw2huw9c7vOVM3QuPucz5_ooiqeETPI=",
+      link: "/missing-report",
+      title: "Missing Report ",
+      subTitle: "Create Report",
+    },
+    {
+      url: "https://img.freepik.com/free-vector/hand-drawn-no-data-illustration_23-2150696455.jpg?w=740&t=st=1715430084~exp=1715430684~hmac=5fb269d2c24dbdf3b7a0a31c57e2d427716b5affc1c4668194c9d77a96c5d075",
+      link: "/all-missing-report",
+      title: "All Missing Person",
+      subTitle: "Manage Missing Person",
+    },
     {
       url: "https://img.freepik.com/free-vector/man-look-graphic-chart-business-analytics-concept-big-data-processing-icon_39422-761.jpg?t=st=1714637938~exp=1714641538~hmac=c4129fcddc5316646969a8e6953ac706700152269565302c359a2ab6e96ebcd7&w=826",
       link: "/show-admin",

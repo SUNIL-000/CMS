@@ -2,16 +2,18 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Criminaldata, statesAndUTs } from "../components/section";
+import { useNavigate } from "react-router-dom";
 
 const CriminalRecord = () => {
+  const navigate= useNavigate()
   const [name, setName] = useState("");
   const [adhaar, setAdhaar] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
-  const [panelcode, setPanelcode] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [nationality, setNationality] = useState("");
+  const [panelcode, setPanelcode] = useState("");
   const [offence, setOffence] = useState("");
   const [caseno, setCaseno] = useState("");
   const [bailstatus, setBailstatus] = useState("");
@@ -40,6 +42,7 @@ const CriminalRecord = () => {
       console.log(data);
       if (data?.success) {
         toast.success(data?.message);
+        navigate("/show-record");
       }
     } catch (error) {
       console.log(error);
@@ -404,7 +407,7 @@ const CriminalRecord = () => {
           </button>
         </div>
       </div>
-      { JSON.stringify(name + state+panelcode+ adhaar + caseno + jailterm +nationality +city+ bailstatus +gender +offence +age)} 
+      {/* { JSON.stringify(name + state+panelcode+ adhaar + caseno + jailterm +nationality +city+ bailstatus +gender +offence +age)}  */}
     </form>
   );
 };

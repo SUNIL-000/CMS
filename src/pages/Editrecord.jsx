@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { Criminaldata } from "../components/section";
 
 const Editrecord = ({ params }) => {
   const { id } = useParams();
@@ -10,10 +11,10 @@ const Editrecord = ({ params }) => {
   const [adhaar, setAdhaar] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
-  const [act, setAct] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [nationality, setNationality] = useState("");
+  const [panelcode, setPanelcode] = useState("");
   const [offence, setOffence] = useState("");
   const [caseno, setCaseno] = useState("");
   const [bailstatus, setBailstatus] = useState("");
@@ -28,7 +29,7 @@ const Editrecord = ({ params }) => {
           adhaar,
           gender,
           age,
-          act,
+          panelcode,
           state,
           city,
           nationality,
@@ -69,14 +70,14 @@ const Editrecord = ({ params }) => {
       const { data } = await axios.get(
         `http://localhost:5000/api/v1/fir/${id}`
       );
-      // console.log(data);
+      console.log(data);
       if (data?.success) {
         toast.success(data?.message);
         setName(data?.singlefir?.name);
         setAdhaar(data?.singlefir?.adhaar);
         setGender(data?.singlefir?.gender);
         setAge(data?.singlefir?.age);
-        setAct(data?.singlefir?.act);
+        setPanelcode(data?.singlefir?.panelcode);
         setState(data?.singlefir?.state);
         setCity(data?.singlefir?.city);
         setNationality(data?.singlefir?.nationality);
@@ -286,24 +287,49 @@ const Editrecord = ({ params }) => {
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-zip"
+            htmlFor="grid-state"
           >
-            Act
+            panel code
           </label>
-          <input
-            value={act}
-            onChange={(e) => setAct(e.target.value)}
-            required
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-zip"
-            type="number"
-            placeholder={"ie-407"}
-          />
+          <div className="relative">
+            <select
+              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-state"
+              required
+              value={panelcode}
+              onChange={(e) => setPanelcode(e.target.value)}
+            >
+              <option value={""} disabled>
+                Select
+              </option>
+
+              {Criminaldata?.map((crime, index) => {
+                return (
+                  <option
+                    key={index}
+                    className="capitalize"
+                    value={crime?.section}
+                  >
+                    {crime?.section}---{crime?.offence}
+                  </option>
+                );
+              })}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <svg
+                className="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="flex flex-wrap -mx-3 mb-2">
-        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-gender"
@@ -316,16 +342,18 @@ const Editrecord = ({ params }) => {
               id="grid-gender"
               value={offence}
               onChange={(e) => setOffence(e.target.value)}
+              required={true}
             >
               <option value={""} disabled>
                 select
               </option>
-              <option value={"theft"}>Theft</option>
-              <option value={"murder"}>Murder</option>
-              <option value={"assault"}>Assault</option>
-              <option value={"alcohol and the law"}>Alcohol and the law</option>
-              <option value={"crime"}>Crime</option>
-              <option value={"cyber Crime"}>Cyber Crime</option>
+              {Criminaldata?.map((crime, index) => {
+                return (
+                  <option key={index} value={crime?.offence}>
+                    {crime?.offence}
+                  </option>
+                );
+              })}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -406,6 +434,8 @@ const Editrecord = ({ params }) => {
           </div>
         </div>
 
+      </div>
+      
         <div className="flex flex-wrap mx-auto mb-2 gap-4 mt-5">
           <button
             type="submit"
@@ -422,8 +452,6 @@ const Editrecord = ({ params }) => {
             Delete
           </button>
         </div>
-      </div>
-      {/* { JSON.stringify(name + state+act+ adhaar + caseno + jailterm +nationality +city+ bailstatus +gender +offence +age)}  */}
     </div>
   );
 };

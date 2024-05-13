@@ -23,7 +23,13 @@ const AdminRecord = () => {
   }, []);
   return (
     <div className="grid grid-cols-2 mt-8 py-16 md:grid-cols-4 gap-4 md:gap-2  items-center justify-center">
-      <AdminCard data={user} />
+      {user?.length > 0 ? (
+        <AdminCard data={user} />
+      ) : (
+        <h1 className="text-3xl font-bold text-gray-700 text-center">
+          No Record Found
+        </h1>
+      )}
     </div>
   );
 };
