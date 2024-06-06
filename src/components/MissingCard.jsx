@@ -6,7 +6,7 @@ const MissingCard = ({ data }) => {
     <>
       {data?.map((data, index) => {
         return (
-          <Link to={`/single-missing-report/${data?._id}`} key={index} className="relative col-span-1  flex w-80 ml-1 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-0">
+          <Link to={`/single-missing-report/${data?._id}`} key={index} className="relative col-span-1 mx-auto  flex w-80 ml-1 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md max-w-2xl md:mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto  lg:mx-auto xl:mx-auto mt-0">
             <div className="relative w-1/2  mx-auto -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white  ">
               <img src={`/images/${data?.photo_url}`} alt="" />
             </div>

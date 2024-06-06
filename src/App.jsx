@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import MissingPersonForm from "./pages/MissingPersonForm";
 import AllMissingRecord from "./pages/AllMissingRecord";
 import EditMissingReport from "./pages/EditMissingReport";
+import Fir from "./pages/Fir";
 
 function App() {
   const [auth, setAuth] = useState({
@@ -59,7 +60,10 @@ function App() {
             path="/single-missing-report/:id"
             element={<ProtectedRoutes isAuthenticate={auth?.name ? true : false}><EditMissingReport /></ProtectedRoutes>}
           />
-
+         <Route
+            path="/fir"
+            element={<Fir />}
+          />
           <Route
             path="/"
             element={

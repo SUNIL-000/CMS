@@ -22,7 +22,7 @@ const AdminRecord = () => {
     getAdminrecord();
   }, []);
   return (
-    <div className="grid grid-cols-2 mt-8 py-16 md:grid-cols-4 gap-4 md:gap-2  items-center justify-center">
+    <div className="grid grid-cols-2 sm:ml-[20%] md:ml-[0%] mt-8 py-16 md:grid-cols-4 gap-4 md:gap-2  items-center justify-center">
       {user?.length > 0 ? (
         <AdminCard data={user} />
       ) : (

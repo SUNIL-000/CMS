@@ -35,7 +35,7 @@ const AllCriminalrecord = () => {
   }, []);
   return (
     <>
-      <div className="text-center mt-20 py-3">
+      <div className="text-center mt-20 mb-7 py-3">
         <input
           type="number"
           name="search"
@@ -45,12 +45,12 @@ const AllCriminalrecord = () => {
         />
         <span
           onClick={searchCiminalData}
-          className="bg-purple-600  cursor-pointer px-2 py-2 rounded-md shadow-2xl text-white capitalize font-semibold"
+          className="bg-purple-600  cursor-pointer px-2 py-2  rounded-md shadow-2xl text-white capitalize font-semibold"
         >
           search
         </span>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3  gap-4 items-center justify-center">
+      <div className="grid grid-cols-1 sm:ml-[20%] md:ml-[0%] md:grid-cols-3  gap-4 items-center justify-center">
         <CriminalCard data={record} />
       </div>
     </>

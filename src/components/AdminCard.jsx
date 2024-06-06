@@ -49,7 +49,7 @@ const AdminCard = ({ data }) => {
         return (
           <div
             key={index}
-            className="p-0 flex flex-wrap items-center justify-center cursor-pointer"
+            className="p-0 flex flex-wrap mx-auto items-center justify-center cursor-pointer"
           >
             <div className="flex-shrink-0 m-2 relative overflow-hidden bg-orange-500 rounded-lg max-w-xs shadow-lg group">
               <svg

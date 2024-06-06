@@ -21,7 +21,7 @@ const CriminalCard = ({ data }) => {
           <Link
             to={`/edit-record/${data?._id}`}
             key={index}
-            className="max-w-2xl w-80 mx-4 sm:max-w-sm md:max-w-3xl lg:max-w-2xl xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-0 bg-white shadow-xl rounded-lg text-gray-900"
+            className="max-w-2xl w-80 mx-4 sm:max-w-sm md:max-w-3xl lg:max-w-2xl xl:max-w-sm sm:ml-[20%] md:mx-auto lg:mx-auto xl:mx-auto mt-0 bg-white shadow-xl rounded-lg text-gray-900"
           >
           
             <div className="mx-auto w-32 h-32 relative shadow-xl -mt-10 border-4 border-white rounded-full overflow-hidden">
@@ -72,7 +72,7 @@ const CriminalCard = ({ data }) => {
                 <p className="block text-[#34495E] font-sans uppercase font-semibold text-md leading-relaxed text-inherit antialiased">
                 jailterm:{" "}
                   <span className="font-medium text-base text-[#5D6D7E] capitalize">
-                    {data?.jailterm}
+                    {data?.jailterm} Year
                   </span>
                 </p>
                 </div>

@@ -23,7 +23,7 @@ const AllMissingRecord = () => {
   }, []);
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-3 py-14
+      className="grid grid-cols-1 sm:ml-[20%] md:ml-[0%] md:grid-cols-3 py-14
     mt-20 gap-4 items-center justify-center"
     >
       {missing.length > 0 ? (
