@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Criminaldata, statesAndUTs } from "../components/section";
 import { useNavigate } from "react-router-dom";
+import { baseBackendUrl } from "../assets/connect";
 
 const CriminalRecord = () => {
   const navigate= useNavigate()

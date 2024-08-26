@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
-import { baseBackendUrl } from "../assets/connect";
+import { baseBackendUrl } from "../assets/connect.js";
 const AdminCard = ({ data }) => {
   const [del, setDel] = useState(false);
   const handleAdmin = async (id) => {

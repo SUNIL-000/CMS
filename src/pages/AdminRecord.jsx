@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AdminCard from "../components/AdminCard";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { baseBackendUrl } from "../assets/connect";
 
 const AdminRecord = () => {
   const [user, setUser] = useState([]);

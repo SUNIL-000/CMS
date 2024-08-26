@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MissingCard from "../components/MissingCard";
 import axios from "axios";
+import { baseBackendUrl } from "../assets/connect";
 
 const AllMissingRecord = () => {
   const [missing, setMissing] = useState([]);

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { baseBackendUrl } from "../assets/connect";
 
 const EditMissingReport = () => {
   const { id } = useParams();
