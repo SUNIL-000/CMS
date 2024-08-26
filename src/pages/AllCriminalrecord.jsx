@@ -8,7 +8,7 @@ const AllCriminalrecord = () => {
   const [adhaar, setSearch] = useState([]);
   const fetchCiminalData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/fir/all");
+      const { data } = await axios.get(`${baseBackendUrl}/api/v1/fir/all`);
       console.log(data?.allFir);
 
       if (data?.success) {
@@ -20,7 +20,7 @@ const AllCriminalrecord = () => {
   const searchCiminalData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/v1/fir/search/fir?adhaar=${adhaar}`
+        `${baseBackendUrl}/api/v1/fir/search/fir?adhaar=${adhaar}`
       );
       console.log(data?.fir);
 

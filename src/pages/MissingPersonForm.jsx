@@ -18,14 +18,7 @@ const MissingPersonForm = () => {
     photo_url: null,
   });
   const [phtPrev, setPhtPrev] = useState("");
-  //   const reader = new FileReader();
-  //   if (formData?.photo_url) {
-  //     reader.readAsDataURL(formData?.photo_url),
-  //       (reader.onloadend = () => {
-  //         if (typeof reader.result === "string") setPhtPrev(reader?.result);
-  //       });
-  //   }
-
+  // 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -68,7 +61,7 @@ const MissingPersonForm = () => {
     console.log(form);
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/missing/new",
+        `${baseBackendUrl}/api/v1/missing/new`,
         form,
         {
           headers: {

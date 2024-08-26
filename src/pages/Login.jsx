@@ -18,7 +18,7 @@ const Login = () => {
       return;
     }
     const { data } = await axios.post(
-      "http://localhost:5000/api/v1/user/login",
+      `${baseBackendUrl}/api/v1/user/login`,
       {
         userid,
         password,
@@ -38,8 +38,6 @@ const Login = () => {
       toast.error(data?.message);
     }
 
-    // Handle authentication logic here (e.g., API call)
-    // For demonstration purposes, simulate a successful login:
   };
 
   return (

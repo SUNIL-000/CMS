@@ -7,7 +7,7 @@ const AllMissingRecord = () => {
   const fetchMissingPerson = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/v1/missing/all"
+        `${baseBackendUrl}/api/v1/missing/all`
       );
 
       if (data?.success) {

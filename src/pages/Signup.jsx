@@ -29,7 +29,7 @@ const Signup = () => {
       }
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/user/signup",
+        `${baseBackendUrl}/api/v1/user/signup` ,
         {
           name,
           userid,

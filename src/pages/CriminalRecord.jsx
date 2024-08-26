@@ -23,7 +23,7 @@ const CriminalRecord = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/api/v1/fir/new`,
+        `${baseBackendUrl}/api/v1/fir/new`,
         {
           name,
           adhaar,

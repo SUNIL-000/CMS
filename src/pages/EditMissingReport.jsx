@@ -109,7 +109,7 @@ const EditMissingReport = () => {
   const handleDelete = async () => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/api/v1/missing/${id}`
+        `${baseBackendUrl}/api/v1/missing/${id}`
       );
 
       if (data?.success) {

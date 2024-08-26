@@ -1,18 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaCity, FaLocationArrow, FaLocationPin } from "react-icons/fa6";
-// act: 100;
-// adhaar: 5222;
-// age: 11;
-// bailstatus: "yes";
-// caseno: "201";
-// city: "cuttack";
-// gender: "male";
-// jailterm: 2;
-// name: "sunil kumar";
-// nationality: "indian";
-// offence: "murder";
-// state: "odisha";
+
 const CriminalCard = ({ data }) => {
   return (
     <>

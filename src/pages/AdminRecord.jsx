@@ -7,7 +7,7 @@ const AdminRecord = () => {
   const [user, setUser] = useState([]);
   const getAdminrecord = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/v1/user/all");
+      const { data } = await axios.get(`${baseBackendUrl}/api/v1/user/all`);
 
       console.log(data?.allUser);
       if (data?.success) {

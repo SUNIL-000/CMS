@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
+import { baseBackendUrl } from "../assets/connect";
 const AdminCard = ({ data }) => {
   const [del, setDel] = useState(false);
   const handleAdmin = async (id) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/api/v1/user/${id}`
+        `${baseBackendUrl}/api/v1/user/${id}`
       );
 
       if (data?.success) {
@@ -23,7 +24,7 @@ const AdminCard = ({ data }) => {
   const deleteAdmin = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/api/v1/user/${id}`
+        `${baseBackendUrl}/api/v1/user/${id}`
       );
       console.log(data);
       if (data?.success) {

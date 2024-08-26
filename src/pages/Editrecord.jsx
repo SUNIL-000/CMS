@@ -68,7 +68,7 @@ const Editrecord = ({ params }) => {
     // e.preventDefaut();
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/v1/fir/${id}`
+        `${baseBackendUrl}/api/v1/fir/${id}`
       );
       console.log(data);
       if (data?.success) {
