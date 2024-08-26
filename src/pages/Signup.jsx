@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
-  const role = "";
   const navigate =useNavigate();
   const [email, setEmail] = useState("");
   const [userid, setUserId] = useState("");
@@ -15,16 +14,13 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validation (optional, but recommended)
-
     try {
       if (
         !name ||
         !email ||
         !userid ||
         !password ||
-        password !== confirmPassword
+        password != confirmPassword
       ) {
         setErrorMessage(
           "Please fill in all fields and ensure passwords match."
@@ -50,8 +46,7 @@ const Signup = () => {
     } catch (error) {
       console.log(error);
     }
-    // Handle signup logic here (e.g., API call)
-    // For demonstration purposes, simulate a successful signup:
+    
   };
 
   return (
