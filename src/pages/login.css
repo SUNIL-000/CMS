@@ -1,0 +1,8 @@
+.maindiv{
+    height: 500px;
+    width: 500px;
+    border-radius: 20px;
+    background-color: aqua;
+    margin-left: 35%;
+    margin-top: 6%;
+}

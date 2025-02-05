@@ -36,7 +36,7 @@ const Signup = () => {
           userid,
           email,
           password,
-          role: "user",
+          role: "admin",
         }
       );
 

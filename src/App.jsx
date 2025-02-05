@@ -15,6 +15,7 @@ import MissingPersonForm from "./pages/MissingPersonForm";
 import AllMissingRecord from "./pages/AllMissingRecord";
 import EditMissingReport from "./pages/EditMissingReport";
 import Fir from "./pages/Fir";
+import Login1 from "./pages/Login1";
 
 function App() {
   const [auth, setAuth] = useState({
@@ -46,6 +47,11 @@ function App() {
           <Route
             path="/login"
             element={auth?.name ? <Navigate to={"/"} /> : <Login />}
+          />
+
+<Route
+            path="/login1"
+            element={ <Login1 />}
           />
           <Route
             path="/all-missing-report"
