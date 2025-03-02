@@ -63,7 +63,7 @@ const Login = () => {
                 required={true}
                 id="number"
                 className="w-full rounded-md border border-gray-300 bg-white py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-600"
-                placeholder="userid"
+                placeholder="User ID"
                 value={userid}
                 onChange={(e) => setUserid(e.target.value)}
               />
