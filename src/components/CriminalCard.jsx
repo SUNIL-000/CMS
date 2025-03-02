@@ -10,14 +10,17 @@ const CriminalCard = ({ data }) => {
           <Link
             to={`/edit-record/${data?._id}`}
             key={index}
-            className="max-w-2xl w-80 mx-4 sm:max-w-sm md:max-w-3xl lg:max-w-2xl xl:max-w-sm sm:ml-[20%] md:mx-auto lg:mx-auto xl:mx-auto mt-0 bg-white shadow-xl rounded-lg text-gray-900"
+            className="max-w-2xl w-80 mx-4 sm:max-w-sm md:max-w-3xl
+             lg:max-w-2xl xl:max-w-sm sm:ml-[20%] md:mx-auto lg:mx-auto
+              xl:mx-auto mt-0 bg-white shadow-xl rounded-lg text-gray-900"
           >
           
-            <div className="mx-auto w-32 h-32 relative shadow-xl -mt-10 border-4 border-white rounded-full overflow-hidden">
+            <div className="mx-auto w-32 h-32 relative shadow-xl
+             -mt-10 border-4 border-white rounded-full overflow-hidden">
               <img
                 className="object-cover object-center h-32 shadow-md"
-                src="https://img.freepik.com/free-vector/law-legal-justice-graphic_24877-52555.jpg?t=st=1714641225~exp=1714644825~hmac=8c4afc21c56eddc40a4f36b06ef71715a62011d02e2f5018e0e316277628ee00&w=740"
                 alt="Woman looking front"
+                src="https://www.shutterstock.com/image-photo/criminal-wearing-black-balaclava-hoodie-600nw-1874960659.jpg"
               />
             </div>
             <div className="text-center mt-2">
@@ -29,7 +32,9 @@ const CriminalCard = ({ data }) => {
               </p>
 
               <div className="py-3 px-6 ">
-                <h5 className="mb-2 block text-center bg-gray-200 px-2 rounded-md py-2 capitalize  font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                <h5 className="mb-2 block text-center text-black capitalize 
+                px-2 rounded-md py-2   font-sans text-xl font-semibold 
+                ">
                   {data?.name}
                 </h5>
                 <div className="flex flex-col justify-start items-start">
@@ -93,7 +98,7 @@ const CriminalCard = ({ data }) => {
                 </div>
               </li>
             </ul>
-            <div className="p-4 border-t mx-0 mt-2">
+            <div className="px-1 border-t mx-0 mt-0">
               <button className="w-full block mx-auto capitalize rounded-full bg-[#5D6D7E] hover:shadow-lg font-semibold text-white px-6 py-2">
                 #{data?.offence.substring(0, 20)}...
               </button>
