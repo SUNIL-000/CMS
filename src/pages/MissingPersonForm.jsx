@@ -87,14 +87,14 @@ const MissingPersonForm = () => {
   };
 
   return (
-    <div className="h-full bg-gray-400 ">
+    <div className="h-full ">
       <div className="mx-auto ">
         <div className="flex justify-center px-6 py-12">
           {/* Row */}
           <div className="w-full xl:w-3/4 lg:w-11/12 flex mt-14">
             {/* Col */}
             <div
-              className="w-full h-full bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+              className="w-full h-full bg-[#e6e4e4b5] hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
               style={{
                 // backgroundSize: " cona",
                 backgroundSize: "cover",
@@ -104,9 +104,9 @@ const MissingPersonForm = () => {
               }}
             />
             {/* Col */}
-            <div className="w-full lg:w-7/12 bg-white    p-5 rounded-lg lg:rounded-l-none">
-              <h3 className="py-4 text-2xl text-center text-gray-600 font-bold uppercase drop-shadow-md">
-                Register missing person
+            <div className="w-full lg:w-7/12 bg-[#e6e4e4b5] p-2   rounded-lg lg:rounded-l-none">
+              <h3 className="py-4 text-2xl text-center text-[#16A085] font-bold uppercase">
+                 Missing person complaint
               </h3>
               <form
                 className="px-8 pt-6 pb-8 mb-4 bg-white   rounded"
@@ -228,7 +228,7 @@ const MissingPersonForm = () => {
                       className="appearance-none block w-full bg-gray-200 text-gray-600 uppercase border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="reported_by"
                       type="text"
-                      placeholder="Enter name"
+                      placeholder="Contact Name"
                     />
                   </div>
                 </div>
@@ -249,7 +249,7 @@ const MissingPersonForm = () => {
                       className="appearance-none block w-full bg-gray-200 text-gray-600 uppercase border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="contact"
                       type="number"
-                      placeholder="First Name"
+                      placeholder="Contact Numebr"
                       name="reported_by_contact"
                     />
                   </div>
@@ -268,7 +268,7 @@ const MissingPersonForm = () => {
                       className="appearance-none block w-full bg-gray-200 text-gray-600 uppercase border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="reported_by"
                       type="file"
-                      placeholder="Enter photo_url"
+                      placeholder="Upload Photo"
                     />
                   </div>
 

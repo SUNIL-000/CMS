@@ -4,58 +4,93 @@ import toast from "react-hot-toast";
 import CriminalCard from "../components/CriminalCard";
 import { baseBackendUrl } from "../assets/connect";
 
-const AllCriminalrecord = () => {
-  const [record, serRecord] = useState([]);
-  const [adhaar, setSearch] = useState([]);
-  const fetchCiminalData = async () => {
+const AllCriminalRecord = () => {
+  const [records, setRecords] = useState([]); // Store FIR records
+  const [searchName, setSearchName] = useState(""); // Search input state
+  const [loading, setLoading] = useState(false);
+
+  // Function to fetch all FIR records
+  const fetchAllCriminalData = async () => {
+    setLoading(true);
     try {
       const { data } = await axios.get(`${baseBackendUrl}/api/v1/fir/all`);
-      console.log(data?.allFir);
-
       if (data?.success) {
-        toast.success(data?.message);
-        serRecord(data?.allFir);
+        setRecords(data?.allFir || []);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setRecords([]);
+    }
+    setLoading(false);
   };
-  const searchCiminalData = async () => {
+
+  // Function to fetch specific FIR records based on search
+  const searchCriminalData = async () => {
+    if (!searchName.trim()) {
+      fetchAllCriminalData(); // If search is empty, fetch all records
+      return;
+    }
+
+    setLoading(true);
     try {
-      const { data } = await axios.get(
-        `${baseBackendUrl}/api/v1/fir/search/fir?adhaar=${adhaar}`
-      );
-      console.log(data?.fir);
-
+      const { data } = await axios.get(`${baseBackendUrl}/api/v1/fir/search/fir?name=${searchName}`);
+      
       if (data?.success) {
-        // toast.success(data?.message);
-        serRecord(data?.fir);
+        setRecords(data?.fir || []);
+      } else {
+        setRecords([]); // Show no records found
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error searching record:", error);
+      setRecords([]);
+    }
+    setLoading(false);
   };
+
+  // Fetch all records on initial load
   useEffect(() => {
-    fetchCiminalData();
+    fetchAllCriminalData();
   }, []);
+
+  // Fetch records dynamically when searchName changes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchName.trim()) {
+        searchCriminalData();
+      } else {
+        fetchAllCriminalData(); // Fetch all records when search is cleared
+      }
+    }, 500); // Debounce API calls to avoid excessive requests
+
+    return () => clearTimeout(timer);
+  }, [searchName]);
+
   return (
     <>
+      {/* Search Input */}
       <div className="text-center mt-20 mb-7 py-3">
         <input
-          type="number"
+          type="text"
           name="search"
-          placeholder="Search Record..."
+          placeholder="Search by Name..."
           className="p-2 text-md w-auto md:w-[25vw] shadow-md rounded-md border-none focus:ring-white active:ring-0 m-2"
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
         />
-        <span
-          onClick={searchCiminalData}
-          className="bg-purple-600  cursor-pointer px-2 py-2  rounded-md shadow-2xl text-white capitalize font-semibold"
-        >
-          search
-        </span>
       </div>
-      <div className="grid grid-cols-1 sm:ml-[20%] md:ml-[0%] md:grid-cols-3  gap-4 items-center justify-center">
-        <CriminalCard data={record} />
+
+      {/* Data Display */}
+      <div className="grid grid-cols-1 sm:ml-[20%] md:ml-[0%] md:grid-cols-3 gap-4 items-center justify-center">
+        {loading ? (
+          <h1 className="text-3xl font-bold text-gray-700 text-center">Loading...</h1>
+        ) : records.length > 0 ? (
+          <CriminalCard data={records} />
+        ) : (
+          <h1 className="text-3xl font-bold text-gray-700 text-center">No Record Found</h1>
+        )}
       </div>
     </>
   );
 };
 
-export default AllCriminalrecord;
+export default AllCriminalRecord;

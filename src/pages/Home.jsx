@@ -4,13 +4,13 @@ import HomeComponent from "../components/HomeComponent";
 const Home = () => {
   const data = [
     {
-      url: "https://img.freepik.com/free-photo/middle-aged-man-spending-time-jail_23-2149098118.jpg?t=st=1714637609~exp=1714641209~hmac=14c5ad5c48466c3770025790b973f7adf1eb2cc87328fdaeb6b7b2988ebc934c&w=996",
+      url: "https://www.shutterstock.com/image-photo/criminal-wearing-black-balaclava-hoodie-600nw-1874960659.jpg",
       link: "/add",
       title: "ADD",
       subTitle: "Criminal Record",
     },
     {
-      url: "https://media.istockphoto.com/id/1335050732/photo/businessman-using-a-computer-to-document-management-concept-online-documentation-database-and.jpg?s=2048x2048&w=is&k=20&c=JHaHbIRf1Zikdw2huw9c7vOVM3QuPucz5_ooiqeETPI=",
+      url: "https://images.squarespace-cdn.com/content/v1/5b8709309f87706a308b674a/1630432472107-419TL4L1S480Z0LIVRYA/Missing.jpg",
       link: "/missing-report",
       title: "Missing Report ",
       subTitle: "Create Report",

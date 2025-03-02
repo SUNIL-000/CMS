@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import { IoMdLogOut } from "react-icons/io";
 
 const Nav = () => {
   const [auth, setAuth] = useState({
@@ -26,29 +27,30 @@ const Nav = () => {
       localStorage.clear();
       window.location.reload();
       // useEffect(()=>{},[])
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
-    <header className="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-gray-100 bg-white/80 py-2 shadow backdrop-blur-lg md:top-6 md:rounded-3xl lg:max-w-screen-lg">
+    <header className="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-gray-100
+     bg-white/80 py-2 shadow backdrop-blur-lg md:top-6 md:rounded-sm lg:max-w-screen-lg">
       <div className="px-4">
-        {}
+        { }
         <div className="flex items-center justify-between">
           <div className="flex shrink-0">
             <Link aria-current="page" className="flex items-center" to="/">
               <img className="h-7 w-auto" src="/cms.jpg" alt="navimaage" />
-              <p className="sr-only">Home</p>
+              {/* <p className="sr-only">Home</p> */}
             </Link>
           </div>
           <div className="hidden md:flex md:items-center md:justify-center md:gap-5">
             <Link
               aria-current="page"
-              className="inline-block rounded-lg px-2 py-1 text-sm font-bold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
+              className="inline-block rounded-lg px-2 py-1 text-sm font-bold text-indigo-600 uppercase transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
               to=""
             >
               Home
             </Link>
             <Link
-              className="inline-block rounded-lg px-2 py-1 text-md font-bold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
+              className="inline-block rounded-lg px-2 py-1 text-md font-bold text-indigo-600 uppercase transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
               to="#"
             >
               Contact us
@@ -61,10 +63,10 @@ const Nav = () => {
               {auth?.name}
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 min-w-[120px] text-center text-white 
-               bg-gray-600 border border-gray-600 rounded-full active:text-gray-500 hover:bg-transparent hover:text-gray-600 "
+                className="px-1 py-1 min-w-[120px] flex items-center gap-1 justify-center text-center text-white 
+               bg-indigo-600 border border-indigo-600 rounded-sm hover:bg-indigo-700  "
               >
-                Logout
+                Logout <span><IoMdLogOut /></span>
               </button>
             </span>
           ) : (
