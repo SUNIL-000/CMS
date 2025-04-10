@@ -59,7 +59,7 @@ const Login = () => {
             </div>
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <input
-                type="number"
+                type="text"
                 required={true}
                 id="number"
                 className="w-full rounded-md border border-gray-300 bg-white py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-600"
