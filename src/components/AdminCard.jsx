@@ -1,51 +1,39 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { baseBackendUrl } from "../assets/connect.js";
-const AdminCard = ({ data }) => {
-  const [del, setDel] = useState(false);
+
+const AdminCard = ({ data, refreshUsers }) => {
   const handleAdmin = async (id) => {
     try {
-      const { data } = await axios.put(
-        `${baseBackendUrl}/api/v1/user/${id}`
-      );
-
+      const { data } = await axios.put(`${baseBackendUrl}/api/v1/user/${id}`);
       if (data?.success) {
-        console.log(data?.message);
         toast.success(data?.message);
-        setDel(true);
+        refreshUsers(); 
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   const deleteAdmin = async (id) => {
     try {
       const { data } = await axios.delete(
         `${baseBackendUrl}/api/v1/user/${id}`
       );
-      console.log(data);
       if (data?.success) {
-        console.log(data?.message);
         toast.success(data?.message);
-        setDel(true);
+        refreshUsers(); // 🔁 Refresh the user list
       }
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {}, [del]);
   return (
     <>
-      {/* <button
-        // deleteAdmin(user?._id)
-        onClick={() => toast.success("Already Admin")}
-        className=" bg-white  rounded-full text-orange-500 text-2xl font-bold px-2 py-2 leading-none flex items-center"
-      >
-        <MdDelete onClick={() => toast.success("Already Admin")} />
-      </button> */}
+     
       {data?.map((user, index) => {
         return (
           <div
