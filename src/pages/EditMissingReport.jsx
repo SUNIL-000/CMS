@@ -98,8 +98,8 @@ const EditMissingReport = () => {
                   onChange={handleChange}
                 >
                   <option value="missing">Missing</option>
+                  <option value="pending">Pending</option>
                   <option value="found">Found</option>
-                  <option value="resolved">Resolved</option>
                 </select>
               </div>
 

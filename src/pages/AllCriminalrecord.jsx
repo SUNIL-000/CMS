@@ -1,44 +1,48 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import CriminalCard from "../components/CriminalCard";
 import { baseBackendUrl } from "../assets/connect";
 
 const AllCriminalRecord = () => {
-  const [records, setRecords] = useState([]); // Store FIR records
-  const [searchName, setSearchName] = useState(""); // Search input state
+  const [records, setRecords] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Function to fetch all FIR records
   const fetchAllCriminalData = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`${baseBackendUrl}/api/v1/fir/all`);
+      const { data } = await axios.get(`${baseBackendUrl}/api/v1/firs`);
       if (data?.success) {
-        setRecords(data?.allFir || []);
+        setRecords(data?.firs || []);
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching all data:", error);
       setRecords([]);
     }
     setLoading(false);
   };
 
-  // Function to fetch specific FIR records based on search
   const searchCriminalData = async () => {
-    if (!searchName.trim()) {
-      fetchAllCriminalData(); // If search is empty, fetch all records
+    if (!searchInput.trim()) {
+      fetchAllCriminalData();
       return;
     }
 
+    const isNumber = /^\d+$/.test(searchInput.trim());
+
+    const searchQuery = isNumber
+      ? `FIRno=${searchInput.trim()}`
+      : `ComplainantName=${searchInput.trim()}`;
+
     setLoading(true);
     try {
-      const { data } = await axios.get(`${baseBackendUrl}/api/v1/fir/search/fir?name=${searchName}`);
-      
+      const { data } = await axios.get(
+        `${baseBackendUrl}/api/v1/fir/search/fir?${searchQuery}`
+      );
       if (data?.success) {
-        setRecords(data?.fir || []);
+        setRecords(data?.firs || []);
       } else {
-        setRecords([]); // Show no records found
+        setRecords([]);
       }
     } catch (error) {
       console.error("Error searching record:", error);
@@ -47,39 +51,30 @@ const AllCriminalRecord = () => {
     setLoading(false);
   };
 
-  // Fetch all records on initial load
   useEffect(() => {
     fetchAllCriminalData();
   }, []);
 
-  // Fetch records dynamically when searchName changes
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (searchName.trim()) {
-        searchCriminalData();
-      } else {
-        fetchAllCriminalData(); // Fetch all records when search is cleared
-      }
-    }, 500); // Debounce API calls to avoid excessive requests
-
+      searchCriminalData();
+    }, 500);
     return () => clearTimeout(timer);
-  }, [searchName]);
+  }, [searchInput]);
 
   return (
     <>
-      {/* Search Input */}
       <div className="text-center mt-20 mb-7 py-3">
         <input
           type="text"
           name="search"
-          placeholder="Search by Name..."
+          placeholder="Search by FIR Number or Complainant Name..."
           className="p-2 text-md w-auto md:w-[25vw] shadow-md rounded-md border-none focus:ring-white active:ring-0 m-2"
-          value={searchName}
-          onChange={(e) => setSearchName(e.target.value)}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
       </div>
 
-      {/* Data Display */}
       <div className="grid grid-cols-1 sm:ml-[20%] md:ml-[0%] md:grid-cols-3 gap-4 items-center justify-center">
         {loading ? (
           <h1 className="text-3xl font-bold text-gray-700 text-center">Loading...</h1>

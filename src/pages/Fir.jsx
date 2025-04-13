@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Fir = () => {
-  const [formData, setFormData] = useState({
+  const initialState = {
     State: '',
     District: '',
     PoliceStation: '',
@@ -31,20 +31,48 @@ const Fir = () => {
     ComplainantAadharNo: '',
     ComplainantAddress: '',
     DetailsOfSuspected: ''
-  });
+  };
+
+  const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: '' })); // Clear error when typing
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key].trim()) {
+        newErrors[key] = `${key.replace(/([A-Z])/g, ' $1').trim()} is required`;
+      }
     });
+
+    // Aadhar number specific validation
+    if (
+      formData.ComplainantAadharNo &&
+      !/^\d{12}$/.test(formData.ComplainantAadharNo)
+    ) {
+      newErrors.ComplainantAadharNo = 'Aadhar must be 12 digits';
+    }
+
+    return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     console.log(formData);
-    // Submit form data to the server or handle it as needed
+    // ✅ Submit form data to server here
+    alert('FIR Submitted Successfully');
+    setFormData(initialState); // Reset form
   };
 
   return (
@@ -60,10 +88,16 @@ const Fir = () => {
             name={key}
             value={formData[key]}
             onChange={handleChange}
-            className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className={`px-4 py-2 border ${
+              errors[key] ? 'border-red-500' : 'border-gray-300'
+            } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
           />
+          {errors[key] && (
+            <span className="text-red-500 text-sm mt-1">{errors[key]}</span>
+          )}
         </div>
       ))}
+
       <button
         type="submit"
         className="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-700"
